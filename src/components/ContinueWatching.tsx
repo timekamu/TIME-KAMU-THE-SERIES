@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 
 import {
   projects,
-  sectionMeta,
   type SectionId,
 } from '../data/portfolio';
 
@@ -21,8 +20,9 @@ export default function ContinueWatching({
 
   return (
     <section
-      className="
-        relative z-20
+  data-section-count={order.length}
+  className="
+    relative z-20
         -mt-14 pb-12
         sm:-mt-20 sm:pb-16
       "
