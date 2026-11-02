@@ -198,21 +198,21 @@ export default function ResumeViewer({
                       text-sm font-semibold
                       text-white/85
                     ">
-                      {item.title}
+                      {item.school}
                     </h4>
 
                     <p className="
                       mt-1 text-[10px]
                       text-white/40
                     ">
-                      {item.institution}
+                     {item.place} 
                     </p>
 
                     <p className="
                       mt-2 text-[9px]
                       tracking-wider text-[#ff3155]
                     ">
-                      {item.period}
+                      {item.degree} · {item.period}
                     </p>
                   </div>
                 ))}
