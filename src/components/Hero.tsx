@@ -123,22 +123,22 @@ export default function Hero({
         </motion.div>
       </div>
 
+
 {/* INDRA PORTRAIT */}
 <motion.div
-  initial={{ opacity: 0, x: 60, scale: 0.96 }}
+  initial={{ opacity: 0, x: 40, scale: 0.96 }}
   animate={{ opacity: 1, x: 0, scale: 1 }}
   transition={{ duration: 1.2, delay: 0.4, ease: EASE }}
   className="
     pointer-events-none absolute
-right-0 bottom-0 z-0
-block
-w-[58%] h-[48%]
-opacity-50
-sm:w-[50%] sm:h-[60%]
-sm:opacity-70
-md:w-[44%] md:h-[82%]
-md:opacity-100
-max-w-[620px]
+    right-0 top-[12%] z-[5]
+    w-[78%] h-[62%]
+    opacity-65
+    sm:w-[60%] sm:h-[70%]
+    md:right-[3%] md:top-[5%]
+    md:w-[48%] md:h-[88%]
+    md:opacity-100
+    max-w-[680px]
   "
 >
   <img
@@ -146,17 +146,17 @@ max-w-[620px]
     alt="Indrajit Bhunia - TIME KAMU"
     className="
       h-full w-full
-      object-contain object-bottom
-      drop-shadow-[0_20px_60px_rgba(229,9,47,0.18)]
+      object-contain object-top
+      drop-shadow-[0_20px_60px_rgba(229,9,47,0.25)]
     "
   />
   <div className="
     absolute inset-0
     bg-gradient-to-r
-    from-[#070609] via-transparent to-transparent
+    from-[#070609]/40 via-transparent to-transparent
   " />
 </motion.div>
-      
+
       {/* ===================================
           HERO CONTENT
       =================================== */}
