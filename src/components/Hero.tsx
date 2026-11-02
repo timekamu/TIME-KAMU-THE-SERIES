@@ -123,6 +123,35 @@ export default function Hero({
         </motion.div>
       </div>
 
+{/* INDRA PORTRAIT */}
+<motion.div
+  initial={{ opacity: 0, x: 60, scale: 0.96 }}
+  animate={{ opacity: 1, x: 0, scale: 1 }}
+  transition={{ duration: 1.2, delay: 0.4, ease: EASE }}
+  className="
+    pointer-events-none absolute
+    right-0 bottom-0 z-0
+    hidden md:block
+    w-[44%] h-[82%]
+    max-w-[620px]
+  "
+>
+  <img
+    src={`${import.meta.env.BASE_URL}assets/indra-portrait.webp`}
+    alt="Indrajit Bhunia - TIME KAMU"
+    className="
+      h-full w-full
+      object-contain object-bottom
+      drop-shadow-[0_20px_60px_rgba(229,9,47,0.18)]
+    "
+  />
+  <div className="
+    absolute inset-0
+    bg-gradient-to-r
+    from-[#070609] via-transparent to-transparent
+  " />
+</motion.div>
+      
       {/* ===================================
           HERO CONTENT
       =================================== */}
