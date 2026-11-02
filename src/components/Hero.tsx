@@ -130,10 +130,15 @@ export default function Hero({
   transition={{ duration: 1.2, delay: 0.4, ease: EASE }}
   className="
     pointer-events-none absolute
-    right-0 bottom-0 z-0
-    hidden md:block
-    w-[44%] h-[82%]
-    max-w-[620px]
+right-0 bottom-0 z-0
+block
+w-[58%] h-[48%]
+opacity-50
+sm:w-[50%] sm:h-[60%]
+sm:opacity-70
+md:w-[44%] md:h-[82%]
+md:opacity-100
+max-w-[620px]
   "
 >
   <img
