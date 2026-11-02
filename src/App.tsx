@@ -163,7 +163,7 @@ function Series() {
           `Now watching as ${selected?.name ?? 'INDRA'}`
         );
 
-        scrollTo(0, { offset: 0 });
+        scrollTo(0);
       }
     },
     [stage, scrollTo]
