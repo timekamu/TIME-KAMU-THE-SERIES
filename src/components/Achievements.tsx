@@ -8,7 +8,6 @@ import {
 import {
   staggerContainer,
   staggerItem,
-  EASE,
 } from './fx';
 
 export default function Achievements() {
