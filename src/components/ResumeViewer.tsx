@@ -16,7 +16,7 @@ export default function ResumeViewer({
   onView,
 }: ResumeViewerProps) {
   return (
-    <section className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-16 py-20">
+    <section className="mx-auto w-full max-w-[1600px] px-5 py-20 sm:px-8 lg:px-16">
       {/* Heading */}
       <div className="mb-12">
         <p className="mb-3 text-[9px] font-bold tracking-[0.35em] text-[#ff3155]">
@@ -33,7 +33,7 @@ export default function ResumeViewer({
         </p>
       </div>
 
-      {/* Main Profile Card */}
+      {/* Profile Card */}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -151,11 +151,15 @@ export default function ResumeViewer({
                       {item.company}
                     </p>
 
+                    <p className="mt-1 text-xs text-white/40">
+                      {item.place}
+                    </p>
+
                     <p className="mt-2 text-[10px] tracking-wider text-white/35">
                       {item.period}
                     </p>
 
-                    {item.points?.map((point, pointIndex) => (
+                    {item.points.map((point, pointIndex) => (
                       <p
                         key={pointIndex}
                         className="mt-2 text-xs leading-relaxed text-white/50"
