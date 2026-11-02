@@ -289,7 +289,7 @@ export default function ResumeModal({
                       mt-2 text-[9px]
                       tracking-wider text-white/35
                     ">
-                      {item.degree} · {item.period}
+                      {item.period}
                     </p>
                   </div>
                 ))}
