@@ -321,9 +321,7 @@ function Series() {
 
             ))}
 
-            <FinalCTA
-              onReplay={() => setStage('opening')}
-            />
+            <FinalCTA />
 
           </main>
 
