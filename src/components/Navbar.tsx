@@ -72,10 +72,7 @@ export default function Navbar({
     setMenuOpen(false);
 
     setTimeout(() => {
-      scrollTo(`#${id}`, {
-        offset: -85,
-        duration: 1.1,
-      });
+      scrollTo(`#${id}`);
     }, 50);
   };
 
@@ -84,9 +81,7 @@ export default function Navbar({
   // ========================================
 
   const goHome = () => {
-    scrollTo(0, {
-      duration: 1.2,
-    });
+    scrollTo(0);
 
     setMenuOpen(false);
   };
