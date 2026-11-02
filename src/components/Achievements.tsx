@@ -17,8 +17,6 @@ export default function Achievements() {
       mx-auto w-full max-w-[1600px]
       px-5 sm:px-8 lg:px-16
     ">
-
-      {/* Heading */}
       <div className="mb-12">
         <p className="
           mb-3 text-[9px] font-bold
@@ -29,8 +27,7 @@ export default function Achievements() {
 
         <h2 className="
           font-display text-5xl
-          tracking-wide text-white
-          sm:text-7xl
+          tracking-wide text-white sm:text-7xl
         ">
           BRAND
           <span className="text-[#e5092f]">
@@ -39,9 +36,8 @@ export default function Achievements() {
         </h2>
 
         <p className="
-          mt-4 max-w-xl
-          text-sm leading-relaxed
-          text-white/45
+          mt-4 max-w-xl text-sm
+          leading-relaxed text-white/45
         ">
           Every project, every experiment
           and every creative step is part
@@ -49,18 +45,13 @@ export default function Achievements() {
         </p>
       </div>
 
-      {/* Achievement cards */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        viewport={{
-          once: true,
-          amount: 0.1,
-        }}
+        viewport={{ once: true, amount: 0.1 }}
         className="
-          grid grid-cols-1 gap-4
-          sm:grid-cols-2
+          grid grid-cols-1 gap-4 sm:grid-cols-2
         "
       >
         {achievements.map((item, index) => (
@@ -70,14 +61,13 @@ export default function Achievements() {
             whileHover={{ y: -5 }}
             className="
               group relative overflow-hidden
-              rounded-xl border
-              border-white/10 bg-[#110d12]
-              p-6 transition-colors
+              rounded-xl border border-white/10
+              bg-[#110d12] p-6
+              transition-colors
               hover:border-[#e5092f]/40
               sm:p-8
             "
           >
-            {/* Background number */}
             <span className="
               pointer-events-none absolute
               -right-2 -top-8
@@ -87,102 +77,92 @@ export default function Achievements() {
               0{index + 1}
             </span>
 
-            {/* Accent line */}
             <div className="
-              relative mb-7 h-[2px]
-              w-12 bg-[#e5092f]
+              relative mb-7 h-[2px] w-12
+              bg-[#e5092f]
               transition-all duration-500
               group-hover:w-24
             " />
 
-            {/* Category */}
             <p className="
               relative text-[9px]
               font-bold tracking-[0.25em]
               text-[#ff3155]
             ">
-              {item.category}
+              {item.org}
             </p>
 
-            {/* Title */}
             <h3 className="
-              relative mt-3
-              font-display text-3xl
-              tracking-wide text-white
+              relative mt-3 font-display
+              text-3xl tracking-wide text-white
               sm:text-4xl
             ">
               {item.title}
             </h3>
 
-            {/* Description */}
             <p className="
               relative mt-3 max-w-lg
               text-xs leading-relaxed
               text-white/45
             ">
-              {item.description}
+              {item.detail}
             </p>
 
-            {/* Year / label */}
             <div className="
-              relative mt-7
-              flex items-center
-              justify-between gap-3
-              border-t border-white/[0.08]
-              pt-4
+              relative mt-7 flex
+              items-center justify-between
+              gap-3 border-t
+              border-white/[0.08] pt-4
             ">
               <span className="
                 text-[9px] tracking-[0.15em]
-                text-white/35
+                text-[#ff3155]
               ">
-                {item.year}
+                {item.laurel}
               </span>
 
-              <span className="
-                text-[9px] font-bold
-                tracking-[0.15em]
-                text-white/60
-              ">
-                TIME KAMU ORIGINAL
-              </span>
+              {item.link && (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+                    text-[9px] font-bold
+                    tracking-wider text-white/60
+                    hover:text-[#ff3155]
+                  "
+                >
+                  EXPLORE ↗
+                </a>
+              )}
             </div>
           </motion.article>
         ))}
       </motion.div>
 
-      {/* Certifications */}
       {certifications.length > 0 && (
         <div className="mt-14">
-          <div className="mb-6">
-            <p className="
-              text-[9px] font-bold
-              tracking-[0.3em] text-[#ff3155]
-            ">
-              LEARNING & DEVELOPMENT
-            </p>
+          <p className="
+            text-[9px] font-bold
+            tracking-[0.3em] text-[#ff3155]
+          ">
+            LEARNING & DEVELOPMENT
+          </p>
 
-            <h3 className="
-              mt-2 font-display
-              text-3xl tracking-wide text-white
-            ">
-              CERTIFICATIONS
-            </h3>
-          </div>
+          <h3 className="
+            mt-2 font-display text-3xl
+            tracking-wide text-white
+          ">
+            CERTIFICATIONS
+          </h3>
 
           <div className="
-            grid grid-cols-1 gap-3
-            sm:grid-cols-2 lg:grid-cols-3
+            mt-6 grid grid-cols-1
+            gap-3 sm:grid-cols-2 lg:grid-cols-3
           ">
             {certifications.map((certificate) => (
-              <motion.div
+              <div
                 key={certificate.name}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  ease: EASE,
-                }}
                 className="
                   rounded-lg border
                   border-white/10
@@ -203,18 +183,32 @@ export default function Achievements() {
                   {certificate.issuer}
                 </p>
 
-                <p className="
-                  mt-4 text-[9px]
-                  tracking-wider text-[#ff3155]
-                ">
-                  {certificate.year}
-                </p>
-              </motion.div>
+                {certificate.link && (
+                  <a
+                    href={certificate.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="
+                      mt-4 inline-block
+                      text-[9px] text-[#ff3155]
+                    "
+                  >
+                    VIEW CERTIFICATE ↗
+                  </a>
+                )}
+              </div>
             ))}
           </div>
         </div>
       )}
 
+      <div className="
+        mt-10 border-t border-white/[0.08]
+        pt-6 text-[9px]
+        tracking-[0.2em] text-white/35
+      ">
+        LEARN · EXPERIMENT · CREATE
+      </div>
     </section>
   );
 }
