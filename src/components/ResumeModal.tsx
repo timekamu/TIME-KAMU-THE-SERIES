@@ -216,7 +216,7 @@ export default function ResumeModal({
               <div className="space-y-5">
                 {education.map((item, index) => (
                   <div
-                    key={`${item.title}-${index}`}
+                    key={`${item.school}-${index}`}
                     className="
                       border-l-2
                       border-[#e5092f]/50
@@ -227,14 +227,14 @@ export default function ResumeModal({
                       text-sm font-semibold
                       text-white/85
                     ">
-                      {item.title}
+                      {item.school}
                     </h3>
 
                     <p className="
                       mt-1 text-xs
                       text-white/45
                     ">
-                      {item.institution}
+                      {item.place}
                     </p>
 
                     <p className="
@@ -242,7 +242,7 @@ export default function ResumeModal({
                       tracking-wider
                       text-[#ff3155]
                     ">
-                      {item.period}
+                      {item.degree} · {item.period}
                     </p>
                   </div>
                 ))}
@@ -289,7 +289,7 @@ export default function ResumeModal({
                       mt-2 text-[9px]
                       tracking-wider text-white/35
                     ">
-                      {item.period}
+                      {item.degree} · {item.period}
                     </p>
                   </div>
                 ))}
