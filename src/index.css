@@ -1,0 +1,705 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
+
+@import 'tailwindcss';
+
+/* ==========================================
+   TIME KAMU — CINEMATIC DESIGN SYSTEM
+   BLACK / CRIMSON / NETFLIX INSPIRED
+========================================== */
+
+@theme {
+  --color-ink: #070609;
+  --color-ink-2: #0e0b10;
+  --color-ink-3: #171117;
+
+  --color-crimson: #e5092f;
+  --color-crimson-2: #ff3155;
+
+  --color-bone: #f4f1ec;
+  --color-mist: #aaa5ac;
+  --color-smoke: #716b73;
+
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --ease-cine: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================
+   ROOT VARIABLES
+========================================== */
+
+:root {
+  color-scheme: dark;
+
+  --gutter: clamp(16px, 4vw, 58px);
+
+  --background: #070609;
+  --foreground: #f4f1ec;
+  --accent: #e5092f;
+  --accent-light: #ff3155;
+
+  --border: rgba(255, 255, 255, 0.1);
+
+  --shadow-red:
+    0 0 25px rgba(229, 9, 47, 0.16),
+    0 0 70px rgba(229, 9, 47, 0.08);
+}
+
+/* ==========================================
+   GLOBAL RESET
+========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  background: var(--background);
+
+  scroll-behavior: smooth;
+
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: #6b1529 #070609;
+  scrollbar-width: thin;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+html.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+
+  background:
+    radial-gradient(
+      ellipse at 50% -20%,
+      rgba(110, 9, 35, 0.12),
+      transparent 55%
+    ),
+    var(--background);
+
+  color: var(--foreground);
+
+  font-family: var(--font-sans);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: var(--font-sans);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+img,
+video {
+  display: block;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070609;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #ff3155,
+    #690b25
+  );
+
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff3155;
+}
+
+/* ==========================================
+   COMMON LAYOUT
+========================================== */
+
+.gutter {
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.container-cine {
+  width: min(100% - 2 * var(--gutter), 1500px);
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-top: clamp(60px, 9vw, 120px);
+  padding-bottom: clamp(60px, 9vw, 120px);
+}
+
+/* ==========================================
+   FILM GRAIN
+========================================== */
+
+.grain {
+  position: fixed;
+  inset: -50%;
+
+  z-index: 90;
+  pointer-events: none;
+
+  opacity: 0.055;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  animation: grain 1.2s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  20% {
+    transform: translate(-3%, 2%);
+  }
+
+  40% {
+    transform: translate(2%, -3%);
+  }
+
+  60% {
+    transform: translate(-2%, -1%);
+  }
+
+  80% {
+    transform: translate(3%, 3%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ==========================================
+   CINEMATIC TYPOGRAPHY
+========================================== */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.text-outline {
+  color: transparent;
+
+  -webkit-text-stroke:
+    1.5px rgba(244, 241, 236, 0.34);
+}
+
+.text-glow {
+  text-shadow:
+    0 0 15px rgba(255, 49, 85, 0.45),
+    0 0 40px rgba(229, 9, 47, 0.2);
+}
+
+.shimmer-text {
+  background:
+    linear-gradient(
+      90deg,
+      #f4f1ec 0%,
+      #f4f1ec 35%,
+      #ff8095 50%,
+      #f4f1ec 65%,
+      #f4f1ec 100%
+    );
+
+  background-size: 200% auto;
+
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ==========================================
+   GLASS EFFECT
+========================================== */
+
+.glass {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+.glass-red {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(229, 9, 47, 0.17),
+      rgba(20, 5, 12, 0.72)
+    );
+
+  border: 1px solid rgba(255, 49, 85, 0.25);
+
+  box-shadow: var(--shadow-red);
+}
+
+/* ==========================================
+   CINEMATIC BUTTONS
+========================================== */
+
+.btn-cine {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 46px;
+  padding: 12px 24px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 5px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+
+  transition:
+    transform 0.3s var(--ease-cine),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.btn-cine:hover {
+  transform: translateY(-3px);
+
+  background: rgba(255, 255, 255, 0.17);
+
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.btn-cine-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+
+  box-shadow:
+    0 8px 25px rgba(229, 9, 47, 0.22);
+}
+
+.btn-cine-primary:hover {
+  background: #ff1747;
+  border-color: #ff1747;
+
+  box-shadow:
+    0 12px 35px rgba(229, 9, 47, 0.35);
+}
+
+/* ==========================================
+   HORIZONTAL PROJECT RAILS
+========================================== */
+
+.rail {
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  overscroll-behavior-x: contain;
+
+  scroll-snap-type: x proximity;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.rail > * {
+  scroll-snap-align: start;
+}
+
+/* ==========================================
+   PROJECT CARDS
+========================================== */
+
+.project-card {
+  position: relative;
+  isolation: isolate;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+
+  background: #151015;
+
+  transition:
+    transform 0.45s var(--ease-cine),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(255, 49, 85, 0.48);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(229, 9, 47, 0.12);
+}
+
+.project-card::after {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 35%,
+      rgba(0, 0, 0, 0.88) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* ==========================================
+   LIGHT STREAK
+========================================== */
+
+.light-streak {
+  position: absolute;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 90, 110, 0.9),
+      transparent
+    );
+
+  filter: blur(0.4px);
+
+  animation: streak 7s var(--ease-cine) infinite;
+
+  opacity: 0;
+}
+
+@keyframes streak {
+  0% {
+    transform: translateX(-40%) scaleX(0.4);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.9;
+  }
+
+  45% {
+    transform: translateX(40%) scaleX(1);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   CUSTOM CURSOR
+========================================== */
+
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor [role='button'] {
+  cursor: none;
+}
+
+/* ==========================================
+   FOCUS & ACCESSIBILITY
+========================================== */
+
+.focus-ring:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 4px;
+
+  border-radius: 6px;
+}
+
+button,
+a,
+[role='button'] {
+  touch-action: manipulation;
+}
+
+/* ==========================================
+   IMAGE EFFECTS
+========================================== */
+
+.image-cinematic {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-cinematic img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.8s var(--ease-cine),
+    filter 0.6s ease;
+}
+
+.image-cinematic:hover img {
+  transform: scale(1.055);
+  filter: saturate(1.12);
+}
+
+/* ==========================================
+   SECTION DIVIDERS
+========================================== */
+
+.cine-divider {
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 49, 85, 0.38),
+      rgba(255, 255, 255, 0.08),
+      transparent
+    );
+}
+
+/* ==========================================
+   SELECTION & LOADING
+========================================== */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+}
+
+.loading-shimmer {
+  background:
+    linear-gradient(
+      90deg,
+      #171117 20%,
+      #292029 40%,
+      #171117 60%
+    );
+
+  background-size: 200% 100%;
+
+  animation: loading 1.5s ease infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 900px) {
+  :root {
+    --gutter: clamp(18px, 4vw, 34px);
+  }
+
+  .has-custom-cursor,
+  .has-custom-cursor a,
+  .has-custom-cursor button,
+  .has-custom-cursor [role='button'] {
+    cursor: auto;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 18px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .grain {
+    opacity: 0.035;
+  }
+
+  .text-outline {
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .btn-cine {
+    min-height: 44px;
+    padding: 11px 17px;
+    font-size: 12px;
+  }
+
+  .rail {
+    scroll-padding-left: var(--gutter);
+  }
+
+  .project-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .section-space {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 380px) {
+  :root {
+    --gutter: 14px;
+  }
+
+  .btn-cine {
+    gap: 7px;
+    padding-inline: 13px;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+  .grain,
+  .light-streak,
+  .shimmer-text {
+    animation: none !important;
+  }
+
+  .light-streak {
+    display: none;
+  }
+}
