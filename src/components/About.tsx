@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 
 import {
@@ -63,92 +62,91 @@ export default function About() {
         lg:gap-14
       ">
 
-        {/* Creator visual */}
+        {/* Creator Photo */}
         <motion.div
           initial={{
             opacity: 0,
-            x: -30,
+            y: 35,
+            scale: 0.97,
           }}
           whileInView={{
             opacity: 1,
-            x: 0,
+            y: 0,
+            scale: 1,
           }}
           viewport={{ once: true }}
           transition={{
-            duration: 0.9,
+            duration: 1,
             ease: EASE,
           }}
           className="
-            relative min-h-[320px]
+            group relative
+            aspect-[2.1/1]
+            min-h-[220px]
             overflow-hidden rounded-xl
-            border border-white/10
+            border border-[#e5092f]/30
             bg-[#130b10]
-            sm:min-h-[440px]
+            shadow-[0_15px_60px_rgba(229,9,47,0.10)]
+            sm:min-h-[300px]
+            lg:aspect-auto lg:min-h-[440px]
           "
         >
 
-          {/* Background light */}
+          {/* Main image */}
+          <img
+            src="/TIME-KAMU-THE-SERIES/assets/indra-about.png"
+            alt="Indrajit at TIME KAMU Creative Studio"
+            loading="lazy"
+            className="
+              absolute inset-0
+              h-full w-full
+              object-cover object-center
+              transition-transform
+              duration-1000
+              ease-out
+              group-hover:scale-[1.035]
+            "
+          />
+
+          {/* Cinematic overlay */}
           <div className="
-            absolute inset-0
-            bg-[radial-gradient(ellipse_at_50%_25%,rgba(229,9,47,0.25),transparent_60%)]
+            pointer-events-none absolute inset-0
+            bg-gradient-to-t
+            from-[#070609]/30
+            via-transparent
+            to-[#070609]/10
           " />
 
-          {/* Decorative frame */}
+          {/* Red ambient glow */}
           <div className="
-            absolute inset-5
-            rounded-lg border border-white/10
+            pointer-events-none absolute
+            inset-0 opacity-0
+            bg-[radial-gradient(ellipse_at_50%_50%,rgba(229,9,47,0.16),transparent_70%)]
+            transition-opacity duration-700
+            group-hover:opacity-100
           " />
 
-          {/* Letter */}
+          {/* Inner border */}
           <div className="
-            absolute inset-0
-            flex items-center justify-center
-          ">
-            <span className="
-              select-none font-display
-              text-[clamp(180px,30vw,340px)]
-              leading-none text-white/[0.06]
-            ">
-              I
-            </span>
-          </div>
-
-          {/* Creator identity */}
-          <div className="
-            absolute bottom-10 left-8 right-8
-          ">
-            <p className="
-              mb-3 text-[9px]
-              tracking-[0.35em] text-[#ff3155]
-            ">
-              CREATIVE IDENTITY
-            </p>
-
-            <h3 className="
-              font-display text-5xl
-              tracking-wide text-white
-              sm:text-6xl
-            ">
-              {profile.displayName}
-            </h3>
-
-            <p className="
-              mt-2 text-xs
-              tracking-wider text-white/45
-            ">
-              {profile.role}
-            </p>
-          </div>
+            pointer-events-none absolute
+            inset-3 rounded-lg
+            border border-white/15
+          " />
 
           {/* Corner label */}
-          <span className="
-            absolute right-8 top-8
-            rounded-full border border-white/15
-            px-3 py-1 text-[8px]
-            tracking-[0.2em] text-white/55
+          <div className="
+            absolute bottom-6 left-6
+            rounded-full
+            border border-white/20
+            bg-black/40
+            px-4 py-2
+            text-[9px] font-bold
+            tracking-[0.25em]
+            text-white/90
+            backdrop-blur-md
           ">
-            TIME KAMU
-          </span>
+            TIME KAMU CREATIVE STUDIO
+          </div>
 
         </motion.div>
 
