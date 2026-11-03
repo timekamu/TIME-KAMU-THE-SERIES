@@ -130,8 +130,9 @@ function Series() {
   // ========================================
 
   const finishMovieIntro = useCallback(() => {
-    setStage(stored ? 'home' : 'opening');
-  }, [stored]);
+  setStage('home');
+  window.scrollTo(0, 0);
+}, []);
 
   // ========================================
   // SCROLL LOCK
