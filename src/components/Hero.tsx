@@ -142,7 +142,7 @@ export default function Hero({
   "
 >
   <img
-    src={`${import.meta.env.BASE_URL}assets/indra-portrait.webp`}
+    src="/TIME-KAMU-THE-SERIES/assets/indra-portrait.webp"
     alt="Indrajit Bhunia - TIME KAMU"
     className="
       h-full w-full
