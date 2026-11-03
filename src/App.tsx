@@ -26,6 +26,7 @@ import {
 } from './hooks/smoothScroll';
 
 import CustomCursor from './components/CustomCursor';
+import MovieIntro from './components/MovieIntro';
 import OpeningSequence from './components/OpeningSequence';
 import ProfileSelector from './components/ProfileSelector';
 import Navbar from './components/Navbar';
@@ -43,7 +44,6 @@ import FinalCTA from './components/FinalCTA';
 
 import { EASE } from './components/fx';
 
-// Load large overlays only when required.
 const PlayIntro = lazy(
   () => import('./components/PlayIntro')
 );
@@ -56,7 +56,7 @@ const ResumeModal = lazy(
   () => import('./components/ResumeModal')
 );
 
-type Stage = 'opening' | 'profiles' | 'home';
+type Stage = 'movie' | 'opening' | 'profiles' | 'home';
 
 const STORAGE_KEY = 'time-kamu-profile';
 
@@ -73,7 +73,6 @@ function readStoredProfile(): ProfileId | null {
     )
       ? (saved as ProfileId)
       : null;
-
   } catch {
     return null;
   }
@@ -98,9 +97,7 @@ export default function App() {
 function Series() {
   const stored = readStoredProfile();
 
-  const [stage, setStage] = useState<Stage>(
-    stored ? 'home' : 'opening'
-  );
+  const [stage, setStage] = useState<Stage>('movie');
 
   const [profileId, setProfileId] = useState<ProfileId>(
     stored ?? 'indrajit'
@@ -128,7 +125,18 @@ function Series() {
 
   const order = activeProfile?.order ?? [];
 
-  // Lock scrolling while cinematic overlays are active.
+  // ========================================
+  // MOVIE INTRO COMPLETE
+  // ========================================
+
+  const finishMovieIntro = useCallback(() => {
+    setStage(stored ? 'home' : 'opening');
+  }, [stored]);
+
+  // ========================================
+  // SCROLL LOCK
+  // ========================================
+
   useEffect(() => {
     if (stage === 'home') return;
 
@@ -245,8 +253,15 @@ function Series() {
       {/* Custom cursor */}
       <CustomCursor />
 
-      {/* Opening and profile screens */}
+      {/* MOVIE INTRO + OPENING SCREENS */}
       <AnimatePresence mode="wait">
+
+        {stage === 'movie' && (
+          <MovieIntro
+            key="movie-intro"
+            onComplete={finishMovieIntro}
+          />
+        )}
 
         {stage === 'opening' && (
           <OpeningSequence
@@ -264,7 +279,7 @@ function Series() {
 
       </AnimatePresence>
 
-      {/* Main portfolio */}
+      {/* MAIN PORTFOLIO */}
       {stage === 'home' && (
 
         <motion.div
@@ -329,7 +344,7 @@ function Series() {
 
       )}
 
-      {/* Lazy-loaded interactive overlays */}
+      {/* LAZY-LOADED OVERLAYS */}
       <Suspense fallback={null}>
 
         <AnimatePresence>
@@ -363,7 +378,7 @@ function Series() {
 
       </Suspense>
 
-      {/* Notification */}
+      {/* NOTIFICATION */}
       <AnimatePresence>
 
         {toast && (
@@ -399,4 +414,4 @@ function Series() {
 
     </LayoutGroup>
   );
-          }
+}
